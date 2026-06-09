@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  # Container 1: The FastAPI Python Application Engine
+  api:
+    build: .
+    container_name: multimodal_rag_api
+    ports:
+      - "8000:8000"
+    environment:
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - QDRANT_URL=http://qdrant:6333
+    volumes:
+      - ./model_cache:/app/model_cache
+    depends_on:
+      - qdrant
+
+  # Container 2: Isolated Qdrant Vector Database instance
+  qdrant:
+    image: qdrant/qdrant:v1.9.0
+    container_name: multimodal_rag_db
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+
+volumes:
+  qdrant_storage:
