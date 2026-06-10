@@ -95,7 +95,7 @@ curl -X POST http://localhost:8000/query \
 | This pipeline | ~$0.003 |
 
 ## Project Structure
-
+```
 Multimodal-RAG-Pipeline/
 ├── ingestion/       # PDF, image, table parsing + chunking
 ├── indexing/        # BGE-M3 embeddings + Qdrant upsert
@@ -106,7 +106,7 @@ Multimodal-RAG-Pipeline/
 ├── monitoring/      # Prometheus config
 ├── pipeline.py      # Full orchestrator
 └── config.py        # Centralized config
-
+```
 ## Author : NADIN KRISHNASAMY B
 
 [LinkedIn] -(https://linkedin.com/in/nadin-krishnasamy)
